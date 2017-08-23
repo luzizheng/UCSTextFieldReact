@@ -12,12 +12,12 @@
 
 
 /**
- *  block监听text的改变
+ *  block observation
  */
 @property(nonatomic,copy)void(^ucs_textChangeHandler)(NSString *text);
 
 /**
- *  selector监听text的改变
+ *  selector observation
  */
 -(void)ucs_bindTextReactHandler:(id)handler andSelector:(SEL)handlerSelector;
 
