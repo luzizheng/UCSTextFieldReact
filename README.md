@@ -2,10 +2,6 @@
 
 pod 'UCSTextFieldReact'
 
-*or*
-
-pod "UCSTextFieldReact", :git => 'http://172.17.16.23:3000/Luzz/UCSTextFieldReact.git'
-
 ## Usage:
 
 *import UCSTextFieldReact.h*
