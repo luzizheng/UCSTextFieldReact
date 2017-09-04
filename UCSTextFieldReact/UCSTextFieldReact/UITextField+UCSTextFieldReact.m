@@ -18,11 +18,11 @@ static char kUCSTextFieldReactBlockKey;
 static char kUCSTextFieldReactAddOberserFlagKey;
 @dynamic ucs_textChangeHandler;
 
--(void)dealloc
+
+-(void)resignReactive
 {
     [self ucs_removeObserver];
 }
-
 -(void)ucs_addObserver
 {
     __weak typeof(self)weakSelf = self;
