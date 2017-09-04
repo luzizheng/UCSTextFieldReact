@@ -19,9 +19,22 @@ static char kUCSTextFieldReactAddOberserFlagKey;
 @dynamic ucs_textChangeHandler;
 
 
--(void)resignReactive
+
+
+-(void)removeFromSuperview
 {
-    [self ucs_removeObserver];
+    [self removeReactive];
+}
+-(void)removeReactive
+{
+    id flag = objc_getAssociatedObject(self, &kUCSTextFieldReactAddOberserFlagKey);
+    if (flag) {
+        if ([flag boolValue]) {
+            [self removeObserver:self forKeyPath:@"text"];
+            [[NSNotificationCenter defaultCenter] removeObserver:self];
+            objc_setAssociatedObject(self, &kUCSTextFieldReactAddOberserFlagKey, [NSNumber numberWithBool:NO], OBJC_ASSOCIATION_ASSIGN);
+        }
+    }
 }
 -(void)ucs_addObserver
 {
@@ -32,22 +45,6 @@ static char kUCSTextFieldReactAddOberserFlagKey;
     // set flag
     objc_setAssociatedObject(self, &kUCSTextFieldReactAddOberserFlagKey, [NSNumber numberWithBool:YES], OBJC_ASSOCIATION_ASSIGN);
 }
-
--(void)ucs_removeObserver
-{
-    
-    id flag = objc_getAssociatedObject(self, &kUCSTextFieldReactAddOberserFlagKey);
-    if (flag) {
-        if ([flag boolValue]) {
-            [self removeObserver:self forKeyPath:@"text"];
-            [[NSNotificationCenter defaultCenter] removeObserver:self];
-            objc_setAssociatedObject(self, &kUCSTextFieldReactAddOberserFlagKey, [NSNumber numberWithBool:NO], OBJC_ASSOCIATION_ASSIGN);
-        }
-    }
-    
-    
-}
-
 
 
 -(void)setUcs_textChangeHandler:(void (^)(NSString *))ucs_textChangeHandler

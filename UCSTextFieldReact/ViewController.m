@@ -31,6 +31,7 @@
 {
     [super viewDidAppear:animated];
     self.navigationItem.title = [NSString stringWithFormat:@"%d",(int)self.navigationController.viewControllers.count];
+    [self.tf becomeFirstResponder];
 }
 -(void)handleValueChanging:(NSString *)text andTextField:(UITextField *)textField
 {

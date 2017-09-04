@@ -22,7 +22,7 @@
 -(void)ucs_bindTextReactHandler:(id)handler andSelector:(SEL)handlerSelector;
 
 
--(void)resignReactive;
+-(void)removeReactive;
 
 
 @end
